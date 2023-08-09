@@ -6,7 +6,7 @@
 parameters:
 - name: MyMessage
   type: string
-  default: "Hello, World!"
+  default: "123!"
   displayName: 'Custom Message'
   
 trigger:
