@@ -17,7 +17,7 @@ pool:
 
 
 steps:
-- script: echo $(MyMessage)
+- script: echo ${{parameters.MyMessage}}
   displayName: 'Run a one-line script'
 
 - script: |
