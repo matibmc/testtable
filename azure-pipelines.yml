@@ -3,6 +3,12 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+parameters:
+- name: MyMessage
+  type: string
+  default: "Hello, World!"
+  displayName: 'Custom Message'
+  
 trigger:
 - main
 
