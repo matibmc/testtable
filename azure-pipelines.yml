@@ -1,8 +1,3 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 parameters:
 - name: MyMessage
   type: string
@@ -14,12 +9,30 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+stages:
+- stage: Build
+  jobs:
+  - job: BuildJob
+    steps:
+    - script: echo "Building the project..."
+      displayName: 'Build Step'
+    - script: echo ${{parameters.MyMessage}}
+      displayName: 'Print MyMessage'
 
-steps:
-- script: echo ${{parameters.MyMessage}}
-  displayName: 'Run a one-line script'
+- stage: Test
+  jobs:
+  - job: TestJob
+    steps:
+    - script: echo "Running tests..."
+      displayName: 'Test Step'
+    - script: echo ${{parameters.MyMessage}}
+      displayName: 'Print MyMessage'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- stage: Deploy
+  jobs:
+  - job: DeployJob
+    steps:
+    - script: echo "Deploying the application..."
+      displayName: 'Deploy Step'
+    - script: echo ${{parameters.MyMessage}}
+      displayName: 'Print MyMessage'
