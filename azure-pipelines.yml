@@ -1,3 +1,5 @@
+
+
 parameters:
 - name: MyMessage
   type: string
@@ -30,9 +32,13 @@ stages:
 
 - stage: Deploy
   jobs:
-  - job: DeployJob
-    steps:
-    - script: echo "Deploying the application..."
-      displayName: 'Deploy Step'
-    - script: echo ${{parameters.MyMessage}}
-      displayName: 'Print MyMessage'
+  - deployment: DeploymentJob
+    environment: 'ContainerTest'  # Associate this deployment job with the "ContainerTest" environment
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo "Deploying the application..."
+            displayName: 'Deploy Step'
+          - script: echo ${{parameters.MyMessage}}
+            displayName: 'Print MyMessage'
