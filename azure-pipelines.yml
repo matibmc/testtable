@@ -33,7 +33,6 @@ stages:
 - stage: Deploy
   jobs:
   - deployment: DeploymentJob
-    environment: 'ContainerTest'  # Associate this deployment job with the "ContainerTest" environment
     strategy:
       runOnce:
         deploy:
